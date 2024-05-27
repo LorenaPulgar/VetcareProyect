@@ -1,0 +1,31 @@
+
+Veterinaria: Aprobar una cita, y asignarle una fecha
+
+PUT /{office-id}/appointment/{appointment-id}
+body: date
+
+
+Dueño de mascota: Agendar una cita
+
+POST /{office-id}/appointments
+body: petId
+reponse: {
+  appointmentId  
+}
+
+
+Obtener todas las citas de un usuario.
+ya sea una oficina veterinaria o dueño 
+de mascotas.
+
+GET /{user-id}/appointments
+
+
+Cancelar una cita
+
+PATH /{user-id}/appoinment/{appointment-id}/cancel
+
+
+Registrar usuario
+
+POST users/
