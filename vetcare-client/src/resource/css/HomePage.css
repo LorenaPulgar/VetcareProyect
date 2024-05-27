@@ -186,6 +186,7 @@ nav ul li a:hover {
     display: flex;
     gap: 10px;
     align-items: center;
+    justify-content: center;
 }
 
 .Somos{
