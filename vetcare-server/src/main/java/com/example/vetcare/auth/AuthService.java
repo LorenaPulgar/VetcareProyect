@@ -25,7 +25,7 @@ public class AuthService {
                 .email(request.email())
                 .password(passwordEncoder.encode(request.password()))
                 .phoneNumber(request.phoneNumber())
-                .role(Role.PET_OWNER)
+                .role(Role.USER)
                 .build();
 
         userRepository.save(user);
