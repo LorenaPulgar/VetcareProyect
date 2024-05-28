@@ -16,7 +16,7 @@
                     </ul>
                 </nav>
                 <div class="btn-signup">
-                    <button class="signup">Sign up</button>
+                    <button class="signup" @click="goToSignUp">Sign up</button>
                 </div>
             </div>
         </header>
@@ -76,6 +76,11 @@
     </div>
 </template>
 
-<script src="../resource/js/HomePage.js"></script>
+<script>
+    import homePageMethods from '../resource/js/HomePage.js';
+
+    export default homePageMethods;
+</script>
 
 <style src="../resource/css/HomePage.css"></style>
+
