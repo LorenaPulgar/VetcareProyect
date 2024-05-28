@@ -76,11 +76,7 @@
     </div>
 </template>
 
-<script>
-    import homePageMethods from '../resource/js/HomePage.js';
-
-    export default homePageMethods;
-</script>
+<script src="../resource/js/HomePage.js"></script>
 
 <style src="../resource/css/HomePage.css"></style>
 
