@@ -81,7 +81,7 @@ export default {
     name: 'HomeComponent',
     methods: {
         goToSignUp() {
-            this.$router.push('/auth');
+            this.$router.push('Auth');
         }
     }
 };

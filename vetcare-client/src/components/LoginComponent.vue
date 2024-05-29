@@ -59,6 +59,15 @@
 <script>
 export default {
     name: 'LoginComponent',
+    data() {
+    return {
+      datos: {
+        email: '',
+        password: '',
+        repassword: ''
+      }
+    };
+  },
     methods: {
         GoToHome() {
             this.$router.push({ name: 'Home' });
