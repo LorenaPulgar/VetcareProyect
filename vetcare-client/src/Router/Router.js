@@ -1,10 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Home from '../components/HomePage.vue'; // Ajusta la ruta según la estructura de tu proyecto
-import LoginComponent from '../components/LoginComponent.vue'; // Ajusta la ruta según la estructura de tu proyecto
+import HomeComponent from '../components/HomePage.vue';
+import LoginComponent from '../components/LoginComponent.vue';
 
 const routes = [
-    { path: '/', component: Home },
-    { path: '/auth', component: LoginComponent }
+    {
+        path: '/',
+        name: 'Home',
+        component: HomeComponent
+    },
+    {
+        path: '/auth',
+        name: 'Auth',
+        component: LoginComponent
+    }
 ];
 
 const router = createRouter({
@@ -13,3 +21,5 @@ const router = createRouter({
 });
 
 export default router;
+
+

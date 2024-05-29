@@ -1,4 +1,9 @@
-const { defineConfig } = require('@vue/cli-service')
+const { defineConfig } = require('@vue/cli-service');
+
 module.exports = {
-  transpileDependencies: true
-}
+  transpileDependencies: [
+    // Lista de dependencias a transcompilar (puede estar vacío)
+  ]
+};
+
+

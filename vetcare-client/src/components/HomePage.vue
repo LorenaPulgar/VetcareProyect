@@ -76,7 +76,15 @@
     </div>
 </template>
 
-<script src="../resource/js/HomePage.js"></script>
+<script>
+export default {
+    name: 'HomeComponent',
+    methods: {
+        goToSignUp() {
+            this.$router.push('/auth');
+        }
+    }
+};
+</script>
 
 <style src="../resource/css/HomePage.css"></style>
-
