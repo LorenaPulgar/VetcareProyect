@@ -12,6 +12,8 @@
     font-family: "Open Sans", sans-serif;
 }
 
+/* Header */
+
 .header {
     position: relative;
     /* Asegura que el pseudo-elemento no se desborde */
@@ -31,44 +33,6 @@
     align-items: center;
 }
 
-.IntroWelcome {
-    position: relative;
-    height: 250px;
-    background-color: #00a8a8;
-    display: grid;
-    gap: 200px;
-    grid-template-areas:
-        "intro welcome";
-    align-items: center;
-    margin-bottom: 20px;
-    justify-content: center;
-}
-
-.IntroWelcome::after {
-    z-index: -1;
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100px;
-    /* Altura de la parte elíptica */
-    background-color: #00a8a8;
-    /* Color de fondo de la elipse */
-    border-radius: 100%;
-    /* Radio de la elipse */
-    transform: translateY(50%);
-    /* Desplaza la elipse hacia abajo */
-}
-
-.intro {
-    grid-area: intro;
-}
-
-.welcome {
-    grid-area: welcome;
-}
-
 .imglogo {
     width: 45px;
 }
@@ -86,6 +50,7 @@
     grid-area: imgeslogo;
 }
 
+/* Nav Menu */
 nav {
     grid-area: navmenu;
 }
@@ -99,9 +64,6 @@ nav {
     margin-bottom: 20px;
 }
 
-.btn-signup {
-    grid-area: btnsignup;
-}
 
 nav ul {
     display: flex;
@@ -118,8 +80,14 @@ nav ul li a {
     color: white;
     text-decoration: none;
 }
+
 nav ul li a:hover {
     text-decoration: underline;
+}
+
+/* Boton de inicio de sesion */
+.btn-signup {
+    grid-area: btnsignup;
 }
 
 .signup {
@@ -140,16 +108,45 @@ nav ul li a:hover {
     border-radius: 25px;
 }
 
+/* Seccion de introduccion */
+.IntroWelcome {
+    position: relative;
+    height: 250px;
+    background-color: #00a8a8;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* Distribuye el espacio alrededor de los elementos */
+    margin-bottom: 20px;
+}
 
-.intro h2 {
+.IntroWelcome::after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    /* Altura de la parte elíptica */
+    background-color: #00a8a8;
+    /* Color de fondo de la elipse */
+    border-radius: 100%;
+    /* Radio de la elipse */
+    transform: translateY(50%);
+    /* Desplaza la elipse hacia abajo */
+}
+
+.intro {
     color: #ffffff;
     font-family: "Open Sans", sans-serif;
+}
+
+.intro h2 {
     font-size: 24px;
 }
 
 .intro p {
-    color: #ffffff;
-    font-family: "Open Sans", sans-serif;
     font-size: 18px;
     line-height: 1.5;
 }
@@ -158,69 +155,55 @@ nav ul li a:hover {
     width: 300px;
 }
 
+
+
+/* Seccion information */
 .main-content {
     text-align: center;
     margin: 100px 0;
 }
 
-.intro h2 {
-    font-size: 34px;
+.information {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
-.intro p {
-    font-size: 18px;
-    line-height: 1.5;
+.information div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 0 15px;
 }
-.footer-links div i {
-    width: 55px;
-    height: 55px;
-    border-radius: 50%; /* Esto hace que la imagen sea circular */
-    background-color: #00a8a8; /* Cambia al color de fondo deseado */
+
+.information div i {
+    width: 70px;
+    height: 70px;
+    font-size: 24px;
+    border-radius: 50%;
+    background-color: #00a8a8;
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
-
-}
-.footer-links div{
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    justify-content: center;
+    margin-bottom: 10px;
 }
 
-.Somos{
-    grid-area: somos;
+.information a {
+    color: #00a0a3;
+    text-decoration: none;
+    font-size: 18px;
 }
-.Reseñas{
-    grid-area: reseñas;
-}
-.Cont{
-    grid-area: cont;
-}
-.footer-links{
-    display: grid;
-    gap: 5px;
-    grid-template-areas:
-        "somos reseñas cont";
-    align-items: start;
-    margin-bottom: 20px;
-}
+
+
+
+/* Footer */
 .footer {
     background-color: #00a8a8;
     color: white;
     padding: 20px 0;
     text-align: center;
-}
-
-.footer-links {
-    margin-bottom: 20px;
-}
-
-.footer-links a {
-    margin: 0 15px;
-    color: rgb(0, 0, 0);
-    text-decoration: none;
 }
 
 .social-media {

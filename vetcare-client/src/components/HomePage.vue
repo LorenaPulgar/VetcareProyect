@@ -16,7 +16,7 @@
                     </ul>
                 </nav>
                 <div class="btn-signup">
-                    <button class="signup">Sign up</button>
+                    <button class="signup" @click="goToSignUp">Sign up</button>
                 </div>
             </div>
         </header>
@@ -24,36 +24,46 @@
         <div class="IntroWelcome">
             <section class="intro">
                 <h2>En vetcare <br /> encontraras:</h2>
-
                 <p>
                     Atención médica virtual.<br />
                     Consejos de cuidado de mascotas.<br />
                     Información sobre enfermedades comunes.
                 </p>
             </section>
-            <section class="welcome">
+            <div class="welcome">
                 <img src="../resource/img/ilustracion.png" alt="Welcome" />
-            </section>
+            </div>
         </div>
 
         <main class="main-content">
             <section class="information">
-                <div class="footer-links">
-                    <div class="Somos">
+                <div class="Somos">
+                    <div class="Lupa">
                         <i class="fa-solid fa-magnifying-glass"></i>
-                        <a href="#" class="aSomos">¿Quienes somos?</a>
                     </div>
-                    <div class="Reseñas">
+                    <div class="aSomos">
+                        <a href="#">¿Quienes somos?</a>
+                    </div>
+                </div>
+                <div class="Reseñas">
+                    <div class="Estrella">
                         <i class="fa-regular fa-star"></i>
-                        <a href="#" class="aReseña">Reseñas</a>
                     </div>
-                    <div class="Cont">
+                    <div class="aReseña">
+                        <a href="#">Reseñas</a>
+                    </div>
+                </div>
+                <div class="Cont">
+                    <div class="Flecha">
                         <i class="fa-solid fa-file-arrow-down"></i>
-                        <a href="#" class="aCont">Contenido gratuito</a>
+                    </div>
+                    <div class="aCont">
+                        <a href="#">Contenido gratuito</a>
                     </div>
                 </div>
             </section>
         </main>
+
 
         <footer class="footer">
 
@@ -69,3 +79,4 @@
 <script src="../resource/js/HomePage.js"></script>
 
 <style src="../resource/css/HomePage.css"></style>
+
