@@ -1,3 +1,25 @@
+<script setup>
+
+import { login, register } from '@/auth/auth.js'
+
+const datos = {
+    name: '',
+    phoneNumber: '',
+    email: '',
+    password: '',
+    repassword: ''
+}
+
+function makeRegister() {
+    register(datos)
+}
+
+function makeLogin() {
+    login(datos.email, datos.password)
+}
+
+</script>
+
 <template>
     <div class="fondopagina divcontenedor">
         <button class="btnvolver" @click="goToHome">
@@ -12,7 +34,7 @@
                     </div>
                     <h3>¿Ya tienes una cuenta?</h3>
                     <p>Inicia sesión para entrar en la página</p>
-                    <button @click="showLogin">Iniciar Sesión</button>
+                    <button id="btn__iniciar-sesion" @click="showLogin">Iniciar Sesión</button>
                 </div>
                 <div class="caja__trasera-register">
                     <div class="logopagina">
@@ -21,14 +43,14 @@
                     </div>
                     <h3>¿Aún no tienes una cuenta?</h3>
                     <p>Regístrate para que puedas iniciar sesión</p>
-                    <button @click="showRegister">Registrarse</button>
+                    <button id="btn__registrarse" @click="showRegister">Registrarse</button>
                 </div>
             </div>
 
             <!-- Formulario de Login y registro -->
             <div class="contenedor__login-register">
                 <!-- Login -->
-                <form @submit.prevent="datos.signIn" class="formulario__login" ref="loginForm">
+                <form @submit.prevent="makeLogin" class="formulario__login" ref="loginForm">
                     <h2 class="textTitul">Iniciar Sesión</h2>
                     <input v-model="datos.email" type="email" required placeholder="Correo Electronico">
                     <input v-model="datos.password" type="password" required placeholder="Contraseña">
@@ -42,11 +64,11 @@
                 </form>
 
                 <!-- Register -->
-                <form @submit.prevent="datos.register" class="formulario__register" ref="registerForm">
+                <form @submit.prevent="makeRegister" class="formulario__register" ref="registerForm">
                     <h2 class="textTitul">Registrarse</h2>
-                    <input type="text" placeholder="Nombre completo">
-                    <input v-model="datos.email" type="email" required placeholder="Correo Electronico">
-                    <input type="text" placeholder="Usuario">
+                    <input v-model="datos.name" type="text" placeholder="Nombre completo">
+                    <input v-model="datos.email" type="email" required placeholder="Correo Electrónico">
+                    <input v-model="datos.phoneNumber" type="text" placeholder="Número de teléfono">
                     <input v-model="datos.password" type="password" required placeholder="Contraseña">
                     <input v-model="datos.repassword" type="password" required placeholder="Repetir Contraseña">
                     <button>Registrarse</button>
@@ -65,8 +87,8 @@ export default {
         }
     },
     mounted() {
-        document.getElementById("btn__iniciar-sesion").addEventListener("click", iniciarSesion);
-        document.getElementById("btn__registrarse").addEventListener("click", register);
+        document.getElementById("btn__iniciar-sesion").addEventListener("click", showLogin);
+        document.getElementById("btn__registrarse").addEventListener("click", showRegister);
         window.addEventListener("resize", anchoPage);
 
         //Declarando variables
@@ -94,7 +116,7 @@ export default {
 
         anchoPage();
 
-        function iniciarSesion() {
+        function showLogin() {
             if (window.innerWidth > 850) {
                 formulario_login.style.display = "block";
                 contenedor_login_register.style.left = "10px";
@@ -110,7 +132,7 @@ export default {
             }
         }
 
-        function register() {
+        function showRegister() {
             if (window.innerWidth > 850) {
                 formulario_register.style.display = "block";
                 contenedor_login_register.style.left = "410px";

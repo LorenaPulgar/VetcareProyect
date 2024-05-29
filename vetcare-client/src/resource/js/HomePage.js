@@ -1,3 +1,6 @@
+import eventBus from "@/eventBus";
+
+
 export default {
     name: 'Home',
     methods: {
@@ -10,7 +13,7 @@ export default {
         }
     },
     mounted() {
-        this.$root.$on('showRegister', () => {
+        eventBus.$on('showRegister', () => {
             // Si estás usando un método para mostrar el formulario de registro en el componente LoginComponent, puedes llamarlo aquí
             if (this.$refs.loginComponent) {
                 this.$refs.loginComponent.showRegister();
@@ -18,7 +21,7 @@ export default {
         });
     },
     beforeUnmount() {
-        this.$root.$off('showRegister');
+        eventBus.$off('showRegister');
     }
 };
 
