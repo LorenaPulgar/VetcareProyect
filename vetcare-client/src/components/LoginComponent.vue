@@ -22,7 +22,7 @@ function makeLogin() {
 
 <template>
     <div class="fondopagina divcontenedor">
-        <button class="btnvolver" @click="goToHome">
+        <button class="btnvolver">
             <i class="fa-regular fa-circle-xmark fa-xl"></i>
         </button>
         <div class="contenedor__todo">
@@ -52,7 +52,7 @@ function makeLogin() {
                 <!-- Login -->
                 <form @submit.prevent="makeLogin" class="formulario__login" ref="loginForm">
                     <h2 class="textTitul">Iniciar Sesión</h2>
-                    <input v-model="datos.email" type="email" required placeholder="Correo Electronico">
+                    <input v-model="datos.email" type="email" required placeholder="Correo Electrónico">
                     <input v-model="datos.password" type="password" required placeholder="Contraseña">
                     <a href="">¿Has olvidado tu contraseña?</a>
                     <button>Entrar</button>
@@ -87,8 +87,8 @@ export default {
         }
     },
     mounted() {
-        document.getElementById("btn__iniciar-sesion").addEventListener("click", showLogin);
-        document.getElementById("btn__registrarse").addEventListener("click", showRegister);
+        document.getElementById("btn__iniciar-sesion").addEventListener("click", iniciarSesion);
+        document.getElementById("btn__registrarse").addEventListener("click", register);
         window.addEventListener("resize", anchoPage);
 
         //Declarando variables
@@ -116,7 +116,7 @@ export default {
 
         anchoPage();
 
-        function showLogin() {
+        function iniciarSesion() {
             if (window.innerWidth > 850) {
                 formulario_login.style.display = "block";
                 contenedor_login_register.style.left = "10px";
@@ -132,7 +132,7 @@ export default {
             }
         }
 
-        function showRegister() {
+        function register() {
             if (window.innerWidth > 850) {
                 formulario_register.style.display = "block";
                 contenedor_login_register.style.left = "410px";
