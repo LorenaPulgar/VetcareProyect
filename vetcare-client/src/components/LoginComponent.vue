@@ -1,6 +1,6 @@
 <template>
     <div class="fondopagina divcontenedor">
-        <button class="btnvolver" @click="goToHome">
+        <button class="btnvolver">
             <i class="fa-regular fa-circle-xmark fa-xl"></i>
         </button>
         <div class="contenedor__todo">
@@ -12,7 +12,7 @@
                     </div>
                     <h3>¿Ya tienes una cuenta?</h3>
                     <p>Inicia sesión para entrar en la página</p>
-                    <button @click="showLogin">Iniciar Sesión</button>
+                    <button>Iniciar Sesión</button>
                 </div>
                 <div class="caja__trasera-register">
                     <div class="logopagina">
@@ -21,17 +21,17 @@
                     </div>
                     <h3>¿Aún no tienes una cuenta?</h3>
                     <p>Regístrate para que puedas iniciar sesión</p>
-                    <button @click="showRegister">Registrarse</button>
+                    <button>Registrarse</button>
                 </div>
             </div>
 
             <!-- Formulario de Login y registro -->
             <div class="contenedor__login-register">
                 <!-- Login -->
-                <form @submit.prevent="datos.signIn" class="formulario__login" ref="loginForm">
+                <form class="formulario__login" ref="loginForm">
                     <h2 class="textTitul">Iniciar Sesión</h2>
-                    <input v-model="datos.email" type="email" required placeholder="Correo Electronico">
-                    <input v-model="datos.password" type="password" required placeholder="Contraseña">
+                    <input  type="email" required placeholder="Correo Electronico">
+                    <input type="password" required placeholder="Contraseña">
                     <a href="">¿Has olvidado tu contraseña?</a>
                     <button>Entrar</button>
                     <div class="redessociales">
@@ -42,13 +42,13 @@
                 </form>
 
                 <!-- Register -->
-                <form @submit.prevent="datos.register" class="formulario__register" ref="registerForm">
+                <form  class="formulario__register" ref="registerForm">
                     <h2 class="textTitul">Registrarse</h2>
                     <input type="text" placeholder="Nombre completo">
-                    <input v-model="datos.email" type="email" required placeholder="Correo Electronico">
+                    <input type="email" required placeholder="Correo Electronico">
                     <input type="text" placeholder="Usuario">
-                    <input v-model="datos.password" type="password" required placeholder="Contraseña">
-                    <input v-model="datos.repassword" type="password" required placeholder="Repetir Contraseña">
+                    <input type="password" required placeholder="Contraseña">
+                    <input type="password" required placeholder="Repetir Contraseña">
                     <button>Registrarse</button>
                 </form>
             </div>
