@@ -22,7 +22,7 @@ function makeLogin() {
 
 <template>
     <div class="fondopagina divcontenedor">
-        <button class="btnvolver">
+        <button @click="GoToHome" class="btnvolver">
             <i class="fa-regular fa-circle-xmark fa-xl"></i>
         </button>
         <div class="contenedor__todo">
@@ -83,7 +83,7 @@ export default {
     name: 'LoginComponent',
     methods: {
         GoToHome() {
-            this.$router.push({ name: 'Home' });
+            this.$router.push('/');
         }
     },
     mounted() {
