@@ -1,0 +1,83 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.headermodif {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.imglogo {
+    height: 40px; /* Adjust the size of the logo as needed */
+    margin-right: 10px;
+}
+
+.logo-text {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-signup {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-icons {
+    display: flex;
+    align-items: center;
+}
+
+.nav-icon {
+    height: 30px; /* Adjust the size of the icons as needed */
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.user-menu {
+    position: relative;
+}
+
+.user-icon {
+    height: 40px; /* Adjust the size of the user icon */
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: #009688; /* Match the navbar color */
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.dropdown-item img {
+    height: 20px;
+    margin-right: 10px;
+}
+
+.dropdown-item span {
+    color: white;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
