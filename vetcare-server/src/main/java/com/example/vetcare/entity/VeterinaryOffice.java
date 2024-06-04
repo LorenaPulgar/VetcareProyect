@@ -18,6 +18,9 @@ public class VeterinaryOffice {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column
+    private String name;
+
     @OneToOne
     private User user;
 

@@ -2,10 +2,7 @@ package com.example.vetcare.entity;
 
 import com.example.vetcare.enums.AppointmentStatus;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -15,6 +12,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
