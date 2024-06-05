@@ -29,13 +29,18 @@ public class AuthService {
     private final AuthenticationManager authenticationManager;
 
     public AuthResponse register(RegisterRequest request, Boolean isVeterinary) {
-        User user = User.builder()
+        User.UserBuilder userBuilder = User.builder()
                 .name(request.name())
                 .email(request.email())
                 .password(passwordEncoder.encode(request.password()))
                 .phoneNumber(request.phoneNumber())
-                .role(isVeterinary ? Role.VETERINARY : Role.USER)
-                .build();
+                .role(Role.USER);
+
+        if (isVeterinary) {
+            userBuilder.role(Role.VETERINARY);
+        }
+
+        User user = userBuilder.build();
 
         try {
             User savedUser = userRepository.save(user);
@@ -44,6 +49,7 @@ public class AuthService {
                 veterinaryRepository.save(
                         VeterinaryOffice.builder()
                                 .user(savedUser)
+                                .address(request.address())
                                 .build()
                 );
             } else {

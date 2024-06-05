@@ -1,4 +1,4 @@
 package com.example.vetcare.auth;
 
-public record RegisterRequest(String name, String email, String password, String phoneNumber) {
+public record RegisterRequest(String name, String email, String password, String phoneNumber, String address) {
 }

@@ -25,9 +25,15 @@ public class AppointmentController {
         return ResponseEntity.ok(savedAppointment);
     }
 
+    @RequestMapping(value = "/cancel-appointment", method = RequestMethod.PATCH)
+    public ResponseEntity<AppointmentDTO> create(@RequestBody AppointmentDTO appointmentDTO) {
+        AppointmentDTO savedAppointment = appointmentService.cancelAppointment(appointmentDTO);
+
+        return ResponseEntity.ok(savedAppointment);
+    }
+
     @RequestMapping(value = "/appointment", method = RequestMethod.GET)
     public ResponseEntity<List<AppointmentDTO>> index() {
-
         List<AppointmentDTO> savedAppointment = appointmentService.getAll();
 
         return ResponseEntity.ok(savedAppointment);

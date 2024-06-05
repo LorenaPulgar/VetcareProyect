@@ -7,7 +7,8 @@ Content-Type: application/json
   "name": "Veterinary 1",
   "email": "veterinary1@email.test",
   "password": "1234567891",
-  "phoneNumber": "1234567891"
+  "phoneNumber": "1234567891",
+  "address": "Cra 19 #230 Santa Marta"
 }
 
 <> 2024-06-04T120818.200.json
@@ -23,7 +24,8 @@ Content-Type: application/json
   "name": "Veterinary 2",
   "email": "veterinary2@email.test",
   "password": "1234567892",
-  "phoneNumber": "1234567892"
+  "phoneNumber": "1234567892",
+  "address": "Cra 30 #10 Santa Marta"
 }
 
 <> 2024-06-04T120828.200.json
@@ -38,7 +40,8 @@ Content-Type: application/json
   "name": "Veterinary 3",
   "email": "veterinary3@email.test",
   "password": "1234567893",
-  "phoneNumber": "1234567893"
+  "phoneNumber": "1234567893",
+  "address": "Cra 17 #23 Santa Marta"
 }
 
 <> 2024-06-04T120832.200.json
@@ -53,7 +56,8 @@ Content-Type: application/json
   "name": "Veterinary 4",
   "email": "veterinary4@email.test",
   "password": "1234567894",
-  "phoneNumber": "1234567894"
+  "phoneNumber": "1234567894",
+  "address": "Cra 5 #20 Santa Marta"
 }
 
 <> 2024-06-04T120835.200.json

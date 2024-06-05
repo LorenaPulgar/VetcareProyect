@@ -19,6 +19,7 @@ public class Appointment {
     private Long id;
 
     @Column
+    @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime date;
 
     @OneToOne
