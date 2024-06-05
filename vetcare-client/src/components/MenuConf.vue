@@ -10,22 +10,17 @@
             <div class="nav-signup">
                 <nav>
                     <div class="navbar-icons">
-                        <img src="" alt="Home Icon" class="nav-icon" />
-                        <img src="" alt="Notification Icon" class="nav-icon" />
+                        <i class="fa-solid fa-house"></i>
+                        <i class="fa-regular fa-bell"></i>
                         <div class="user-menu">
-                            <img 
-                                src="" 
-                                alt="User Icon" 
-                                @click="toggleMenu" 
-                                class="user-icon"
-                            />
+                            <i class="fa-solid fa-user" @click="toggleMenu"></i>
                             <div v-if="showMenu" class="dropdown-menu">
                                 <div class="dropdown-item">
-                                    <img src="" alt="Settings Icon" />
+                                    <i class="fa-solid fa-gear"></i>
                                     <span>Configuración</span>
                                 </div>
                                 <div class="dropdown-item">
-                                    <img src="" alt="Logout Icon" />
+                                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
                                     <span>Cerrar sesión</span>
                                 </div>
                             </div>
@@ -36,7 +31,7 @@
         </header>
         <div class="container">
             <div class="avatar">
-                <img src="" alt="Avatar">
+                <img src="../resource/img/dog-8434228_1280.jpg" alt="Avatar">
             </div>
             <p>Vetcare@vetcare.com</p>
             <div class="option">
@@ -51,9 +46,25 @@
                 <span>Administra tu plan</span>
                 <span>&gt;</span>
             </div>
-            <p>Eliminar cuenta</p>
+            <button class="btneliminar"> Eliminar cuenta </button>
         </div>
     </div>
 </template>
 
 <style src="../resource/css/MenuConf.css"></style>
+
+<script>
+export default {
+    name: 'MenuConf',
+    data() {
+        return {
+            showMenu: false,
+        };
+    },
+    methods: {
+        toggleMenu() {
+            this.showMenu = !this.showMenu;
+        },
+    },
+};
+</script>

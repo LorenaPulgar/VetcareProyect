@@ -10,22 +10,17 @@
             <div class="nav-signup">
                 <nav>
                     <div class="navbar-icons">
-                        <img src="" alt="Home Icon" class="nav-icon" />
-                        <img src="" alt="Notification Icon" class="nav-icon" />
+                        <i class="fa-solid fa-house"></i>
+                        <i class="fa-regular fa-bell"></i>
                         <div class="user-menu">
-                            <img 
-                                src="" 
-                                alt="User Icon" 
-                                @click="toggleMenu" 
-                                class="user-icon"
-                            />
+                            <i class="fa-solid fa-user" @click="toggleMenu"></i>
                             <div v-if="showMenu" class="dropdown-menu">
                                 <div class="dropdown-item">
-                                    <img src="" alt="Settings Icon" />
+                                    <i class="fa-solid fa-gear"></i>
                                     <span>Configuración</span>
                                 </div>
                                 <div class="dropdown-item">
-                                    <img src="" alt="Logout Icon" />
+                                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
                                     <span>Cerrar sesión</span>
                                 </div>
                             </div>
@@ -35,35 +30,33 @@
             </div>
         </header>
 
-        <div class="IntroWelcome">
-            <div class="welcome">
-                <img src="../resource/img/ilustracion.png" alt="Welcome" />
-            </div>
+        <div class="Intro">
+            <img src="../resource/img/dog-8434228_1280.jpg" alt="Veterinaria" />
         </div>
 
         <main class="main-content">
             <section class="information">
-                <div class="Somos">
-                    <div class="Lupa">
-                        <i class="fa-solid fa-magnifying-glass"></i>
+                <div class="agendar">
+                    <div class="agendaricon">
+                        <i class="fa-solid fa-calendar-days"></i>
                     </div>
-                    <div class="aSomos">
+                    <div class="aAgendar">
                         <a href="#">Agendar Cita</a>
                     </div>
                 </div>
-                <div class="Reseñas">
-                    <div class="Estrella">
-                        <i class="fa-regular fa-star"></i>
+                <div class="Blog">
+                    <div class="blogicon">
+                        <i class="fa-brands fa-blogger-b"></i>
                     </div>
-                    <div class="aReseña">
+                    <div class="aBlog">
                         <a href="#">Blog</a>
                     </div>
                 </div>
-                <div class="Cont">
-                    <div class="Flecha">
-                        <i class="fa-solid fa-file-arrow-down"></i>
+                <div class="Hist">
+                    <div class="historialicon">
+                        <i class="fa-solid fa-notes-medical"></i>
                     </div>
-                    <div class="aCont">
+                    <div class="aHist">
                         <a href="#">Historial</a>
                     </div>
                 </div>
