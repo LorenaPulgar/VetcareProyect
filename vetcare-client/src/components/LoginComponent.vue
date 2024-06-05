@@ -12,10 +12,12 @@ const datos = {
 
 function makeRegister() {
     register(datos)
+    window.location.assign('/home')
 }
 
 function makeLogin() {
     login(datos.email, datos.password)
+    window.location.assign('/home')
 }
 
 </script>
