@@ -2,10 +2,7 @@ package com.example.vetcare.auth;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
@@ -14,8 +11,8 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping(value = "register", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<AuthResponse> register(@RequestBody RegisterRequest request) {
-        return ResponseEntity.ok(authService.register(request));
+    public ResponseEntity<AuthResponse> register(@RequestParam(value = "isVeterinary", defaultValue = "false", required = false) Boolean isVeterinary, @RequestBody RegisterRequest request) {
+        return ResponseEntity.ok(authService.register(request, isVeterinary));
     }
 
     @PostMapping(value = "login", consumes = "application/json", produces = "application/json")

@@ -1,8 +1,12 @@
 package com.example.vetcare.auth;
 
+import com.example.vetcare.entity.PetOwner;
+import com.example.vetcare.entity.VeterinaryOffice;
 import com.example.vetcare.enums.Role;
 import com.example.vetcare.exception.AlreadyExistException;
 import com.example.vetcare.exception.ResourceNotFoundException;
+import com.example.vetcare.repository.PetOwnerRepository;
+import com.example.vetcare.repository.VeterinaryOfficeRepository;
 import lombok.RequiredArgsConstructor;
 import com.example.vetcare.entity.User;
 import com.example.vetcare.jwt.JwtService;
@@ -18,21 +22,37 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AuthService {
     private final UserRepository userRepository;
+    private final PetOwnerRepository petOwnerRepository;
+    private final VeterinaryOfficeRepository veterinaryRepository;
     private final JwtService jwtService;
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
 
-    public AuthResponse register(RegisterRequest request) {
+    public AuthResponse register(RegisterRequest request, Boolean isVeterinary) {
         User user = User.builder()
                 .name(request.name())
                 .email(request.email())
                 .password(passwordEncoder.encode(request.password()))
                 .phoneNumber(request.phoneNumber())
-                .role(Role.USER)
+                .role(isVeterinary ? Role.VETERINARY : Role.USER)
                 .build();
 
         try {
-            userRepository.save(user);
+            User savedUser = userRepository.save(user);
+
+            if (isVeterinary) {
+                veterinaryRepository.save(
+                        VeterinaryOffice.builder()
+                                .user(savedUser)
+                                .build()
+                );
+            } else {
+                petOwnerRepository.save(
+                        PetOwner.builder()
+                                .user(savedUser)
+                                .build()
+                );
+            }
 
         } catch (DataIntegrityViolationException err) {
             throw new AlreadyExistException("This email is already taken");

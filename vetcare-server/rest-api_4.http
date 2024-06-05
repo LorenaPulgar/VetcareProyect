@@ -1,0 +1,124 @@
+POST http://localhost:8090/auth/register?isVeterinary=true
+Accept: application/json
+Content-Type: application/json
+
+
+{
+  "name": "Veterinary 1",
+  "email": "veterinary1@email.test",
+  "password": "1234567891",
+  "phoneNumber": "1234567891"
+}
+
+<> 2024-06-04T120818.200.json
+<> 2024-06-04T120725.409.json
+###
+
+POST http://localhost:8090/auth/register?isVeterinary=true
+Accept: application/json
+Content-Type: application/json
+
+
+{
+  "name": "Veterinary 2",
+  "email": "veterinary2@email.test",
+  "password": "1234567892",
+  "phoneNumber": "1234567892"
+}
+
+<> 2024-06-04T120828.200.json
+###
+
+POST http://localhost:8090/auth/register?isVeterinary=true
+Accept: application/json
+Content-Type: application/json
+
+
+{
+  "name": "Veterinary 3",
+  "email": "veterinary3@email.test",
+  "password": "1234567893",
+  "phoneNumber": "1234567893"
+}
+
+<> 2024-06-04T120832.200.json
+###
+
+POST http://localhost:8090/auth/register?isVeterinary=true
+Accept: application/json
+Content-Type: application/json
+
+
+{
+  "name": "Veterinary 4",
+  "email": "veterinary4@email.test",
+  "password": "1234567894",
+  "phoneNumber": "1234567894"
+}
+
+<> 2024-06-04T120835.200.json
+###
+
+POST http://localhost:8090/auth/register
+Accept: application/json
+Content-Type: application/json
+
+
+{
+  "name": "User 1",
+  "email": "user1@email.test",
+  "password": "1234567891",
+  "phoneNumber": "1234567891"
+}
+
+<> 2024-06-04T121110.200.json
+<> 2024-06-04T120841.400.json
+###
+
+POST http://localhost:8090/auth/register
+Accept: application/json
+Content-Type: application/json
+
+
+{
+  "name": "User 2",
+  "email": "user2@email.test",
+  "password": "1234567892",
+  "phoneNumber": "1234567892"
+}
+
+<> 2024-06-04T121114.200.json
+<> 2024-06-04T120843.400.json
+###
+
+POST http://localhost:8090/auth/register
+Accept: application/json
+Content-Type: application/json
+
+
+{
+  "name": "User 3",
+  "email": "user3@email.test",
+  "password": "1234567893",
+  "phoneNumber": "1234567893"
+}
+
+<> 2024-06-04T121116.200.json
+<> 2024-06-04T120846.400.json
+###
+
+POST http://localhost:8090/auth/register
+Accept: application/json
+Content-Type: application/json
+
+
+{
+  "name": "User 4",
+  "email": "user4@email.test",
+  "password": "1234567894",
+  "phoneNumber": "1234567894"
+}
+
+<> 2024-06-04T121119.200.json
+<> 2024-06-04T120848.400.json
+###
