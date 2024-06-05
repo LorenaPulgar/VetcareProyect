@@ -41,7 +41,7 @@
                         <i class="fa-solid fa-calendar-days"></i>
                     </div>
                     <div class="aAgendar">
-                        <a href="#">Agendar Cita</a>
+                        <a href="/schedule-appointment">Agendar Cita</a>
                     </div>
                 </div>
                 <div class="Blog">
