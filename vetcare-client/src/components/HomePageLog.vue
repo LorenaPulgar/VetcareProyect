@@ -15,7 +15,7 @@
                         <div class="user-menu">
                             <i class="fa-solid fa-user" @click="toggleMenu"></i>
                             <div v-if="showMenu" class="dropdown-menu">
-                                <div class="dropdown-item">
+                                <div class="dropdown-item" @click="goToMenuConfig">
                                     <i class="fa-solid fa-gear"></i>
                                     <span>Configuración</span>
                                 </div>
@@ -84,6 +84,9 @@ export default {
     methods: {
         toggleMenu() {
             this.showMenu = !this.showMenu;
+        },
+        goToMenuConfig() {
+            this.$router.push('/configuration');
         },
     },
 };
