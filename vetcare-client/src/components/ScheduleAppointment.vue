@@ -1,42 +1,69 @@
 <script setup>
-import { getAppointments } from '@/resource/js/Appointments';
+import { getAppointments, scheduleAppointment } from '@/resource/js/Appointments';
 import { getVeterinaries } from '@/resource/js/Veterinaries';
 import { ref } from 'vue';
+import FullCalendar from '@fullcalendar/vue3';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
 
 /** @type {import('vue').Ref<import('@/resource/js/Veterinaries').Veterinary[]>} */
-const veterinaries = ref([])
-const appointments = ref([])
+const veterinaries = ref([]);
+const appointments = ref([]);
 
 getVeterinaries().then(vets => {
-    veterinaries.value = vets
-})
+    veterinaries.value = vets;
+});
 
 getAppointments().then(apps => {
-    appointments.value = apps
-})
+    if (apps) {
+        appointments.value = apps;
+        // Convert appointments to calendar events
+        calendarEvents.value = apps.map(app => ({
+            id: app.id,
+            title: `Appointment with ${app.veterinaryName}`,
+            start: app.date
+        }));
+    }
+});
 
+const calendarEvents = ref([]);
+
+const handleDateClick = (info) => {
+    const newAppointment = {
+        id: Date.now(),
+        veterinaryName: 'New Veterinary', // Actualiza esto según sea necesario
+        date: info.dateStr
+    };
+    scheduleAppointment(newAppointment).then(() => {
+        appointments.value.push(newAppointment);
+        calendarEvents.value.push({
+            id: newAppointment.id,
+            title: `Appointment with ${newAppointment.veterinaryName}`,
+            start: newAppointment.date
+        });
+    });
+};
 </script>
 
 <template>
     <div class="wrap">
         <h2>Veterinarias</h2>
         <div class="vet-list">
-            <div v-for="veterinary in veterinaries" v-bind:key="veterinary.veterinaryId" class="card">
-                <p>{{veterinary.name}}</p>
-                <p>{{veterinary.address}}</p>
+            <div v-for="veterinary in veterinaries" :key="veterinary.veterinaryId" class="card">
+                <p>{{ veterinary.name }}</p>
+                <p>{{ veterinary.address }}</p>
             </div>
         </div>
-        <div class="vet-list">
-            <div v-for="appointment in appointments" v-bind:key="appointment.id" class="card">
-                <p>{{appointment.id}}</p>
-                <p>{{JSON.stringify(appointment)}}</p>
-            </div>
-        </div>
+        <FullCalendar
+            :plugins="[dayGridPlugin, interactionPlugin]"
+            initialView="dayGridMonth"
+            :events="calendarEvents"
+            @dateClick="handleDateClick"
+        />
     </div>
 </template>
 
 <style>
-
 .wrap {
     font-family: "Open Sans";
     padding: 40px 30px 0px 30px;
