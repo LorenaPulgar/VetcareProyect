@@ -10,7 +10,7 @@
             <div class="nav-signup">
                 <nav>
                     <div class="navbar-icons">
-                        <i class="fa-solid fa-house"></i>
+                        <i class="fa-solid fa-house" @click="goToHomeLog"></i>
                         <i class="fa-regular fa-bell"></i>
                         <div class="user-menu">
                             <i class="fa-solid fa-user" @click="toggleMenu"></i>
@@ -30,23 +30,30 @@
             </div>
         </header>
         <div class="container">
-            <div class="avatar">
-                <img src="../resource/img/dog-8434228_1280.jpg" alt="Avatar">
+            <div class="menuconfig">
+                <div class="avatar">
+                    <img src="../resource/img/business-man-cartoon-character-vector.jpg" alt="Avatar">
+                </div>
+                <p>Vetcare@vetcare.com</p>
+                <div class="option option1">
+                    <h4>Cuenta</h4>
+                    <div class="account-options">
+                        <span> <i class="fa-regular fa-pen-to-square"></i> Editar perfil<i class="fa-solid fa-chevron-right"></i></span>
+                    </div>
+                </div>
+                <div class="option option2">
+                    <h4>Suscripción</h4>
+                    <div class="subscription-options">
+                        <div class="subscription-option">
+                            <span><i class="fa-regular fa-gem"></i> Planes disponibles <i class="fa-solid fa-chevron-right"></i></span>
+                        </div>
+                        <div class="subscription-option">
+                            <span><img src="../resource/img/Logo.svg" alt="Administrar Plan"> Administra tu plan<i class="fa-solid fa-chevron-right"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <button class="btneliminar">Eliminar cuenta</button>
             </div>
-            <p>Vetcare@vetcare.com</p>
-            <div class="option">
-                <span>Editar perfil</span>
-                <span>&gt;</span>
-            </div>
-            <div class="option">
-                <span>Planes disponibles</span>
-                <span>&gt;</span>
-            </div>
-            <div class="option">
-                <span>Administra tu plan</span>
-                <span>&gt;</span>
-            </div>
-            <button class="btneliminar"> Eliminar cuenta </button>
         </div>
     </div>
 </template>
@@ -64,6 +71,9 @@ export default {
     methods: {
         toggleMenu() {
             this.showMenu = !this.showMenu;
+        },
+        goToHomeLog() {
+            this.$router.push('/home');
         },
     },
 };
