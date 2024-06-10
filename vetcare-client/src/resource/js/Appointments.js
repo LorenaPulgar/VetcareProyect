@@ -2,7 +2,6 @@ import axios from "axios";
 
 export async function getAppointments() {
     try {
-
         const response = await axios.get('api/v1/appointment')
 
         return response.data
@@ -12,10 +11,10 @@ export async function getAppointments() {
     }
 }
 
-export async function scheduleAppointment(userId, veterinaryId, date) {
+export async function scheduleAppointment(veterinaryId, date) {
     const requestBody = {
         petOwner: {
-            id: userId
+            id: window.localStorage.getItem('pet-owner-id')
         },
         veterinaryOffice: {
             id: veterinaryId
@@ -24,7 +23,7 @@ export async function scheduleAppointment(userId, veterinaryId, date) {
     }
 
     try {
-        await axios.post('/api/v1/appointment/', requestBody)
+        await axios.post('/api/v1/appointment', requestBody)
     } catch (err) {
         console.error(err);
     }
