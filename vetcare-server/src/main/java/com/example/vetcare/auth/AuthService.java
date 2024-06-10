@@ -34,13 +34,14 @@ public class AuthService {
                 .email(request.email())
                 .password(passwordEncoder.encode(request.password()))
                 .phoneNumber(request.phoneNumber())
-                .role(Role.USER);
+                .role(Role.PET_OWNER);
 
         if (isVeterinary) {
             userBuilder.role(Role.VETERINARY);
         }
 
         User user = userBuilder.build();
+        Long petOwnerId = null;
 
         try {
             User savedUser = userRepository.save(user);
@@ -53,25 +54,27 @@ public class AuthService {
                                 .build()
                 );
             } else {
-                petOwnerRepository.save(
+                petOwnerId = petOwnerRepository.save(
                         PetOwner.builder()
                                 .user(savedUser)
                                 .build()
-                );
+                ).getId();
             }
 
         } catch (DataIntegrityViolationException err) {
             throw new AlreadyExistException("This email is already taken");
         }
 
-        return new AuthResponse(jwtService.getToken(user));
+        return new AuthResponse(jwtService.getToken(user), user.getId(), petOwnerId);
     }
 
     public AuthResponse login(LoginRequest request) {
-        UserDetails userDetails = userRepository.findByEmail(request.email())
+        User userDetails = userRepository.findByEmail(request.email())
                 .orElseThrow(() -> new ResourceNotFoundException("Invalid email or password"));
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.email(), request.password()));
         String token = jwtService.getToken(userDetails);
-        return new AuthResponse(token);
+        var petOwner = petOwnerRepository.findPetOwnerByUser(userDetails);
+        var petOwnerId = petOwner == null ? null : petOwner.getId();
+        return new AuthResponse(token, userDetails.getId(), petOwnerId);
     }
 }

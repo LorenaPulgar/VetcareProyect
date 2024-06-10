@@ -22,10 +22,10 @@ public class Appointment {
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime date;
 
-    @OneToOne
+    @ManyToOne
     private PetOwner petOwner;
 
-    @OneToOne
+    @ManyToOne
     private VeterinaryOffice veterinaryOffice;
 
     @Column

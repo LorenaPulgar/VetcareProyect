@@ -37,6 +37,10 @@ public class AppointmentService {
 
         var appointments = appointmentRepository.findAppointmentByVeterinaryOffice(veterinaryOffice);
 
+        if (appointment.date() == null) {
+            throw new ResourceNotFoundException("");
+        }
+
         boolean occupied = appointments.stream()
                 .anyMatch(app -> app.getDate().equals(appointment.date()));
 
@@ -48,7 +52,8 @@ public class AppointmentService {
         newAppointment.setStatus(AppointmentStatus.PENDING);
 
         var savedAppointment = appointmentRepository.save(newAppointment);
-        return appointmentMapper.appointmentToAppointmentDTO(savedAppointment);
+        var fullAppointment = appointmentRepository.findById(savedAppointment.getId());
+        return appointmentMapper.appointmentToAppointmentDTO(fullAppointment.orElse(null));
     }
 
     public List<AppointmentDTO> getAll() {
