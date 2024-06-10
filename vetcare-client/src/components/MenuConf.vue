@@ -19,7 +19,7 @@
                                     <i class="fa-solid fa-gear"></i>
                                     <span>Configuración</span>
                                 </div>
-                                <div class="dropdown-item">
+                                <div class="dropdown-item" @click="goToHomePage">
                                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                                     <span>Cerrar sesión</span>
                                 </div>
@@ -74,6 +74,9 @@ export default {
         },
         goToHomeLog() {
             this.$router.push('/home');
+        },
+        goToHomePage(){
+            this.$router.push('/');
         },
     },
 };

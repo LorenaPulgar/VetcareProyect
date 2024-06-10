@@ -1,4 +1,7 @@
 import axios from "axios"
 
 axios.defaults.baseURL = 'http://localhost:8090/'
-axios.defaults.headers.common['Authorization'] = 'Bearer ' + window.localStorage.getItem('auth-token')
+const token = window.localStorage.getItem('auth-token')
+
+if (token !== null)
+    axios.defaults.headers.common['Authorization'] ='Bearer ' + token
