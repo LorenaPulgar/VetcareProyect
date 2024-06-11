@@ -15,9 +15,12 @@ getAppointments().then(apps => {
     appointments.value = apps
 })
 
-function scheduleAppointmentHandle(veterinary) {
+async function scheduleAppointmentHandle(veterinary) {
     let date = document.getElementById('vet-' + veterinary.veterinaryId).value
-    scheduleAppointment(veterinary.veterinaryId, date)
+    await scheduleAppointment(veterinary.veterinaryId, date)
+    getAppointments().then(apps => {
+        appointments.value = apps
+    })
 }
 
 function validateTime(event) {
@@ -78,11 +81,11 @@ function validateTime(event) {
         <h2>Citas pendientes</h2>
         <div class="sche-list">
             <div v-for="appointment in appointments" v-bind:key="appointment.id" class="card">
-                <p>{{ appointment.id }}</p>
-                <p class="code" v-for="line in JSON.stringify(appointment, null, '&nbsp; &nbsp;').split('\n')"
-                    v-bind:key="line">
-                    {{ line }}
-                </p>
+                <p> <strong> Veterinaria: </strong> {{ appointment.veterinaryName }} </p>
+                <p> <strong> Fecha: </strong> {{ appointment.date }} </p>
+                <p> <strong> Hora: </strong> {{ appointment.time }} </p>
+                <p> <strong> Dirección: </strong> {{ appointment.address }} </p>
+                <p> <strong> Estado: </strong> {{ appointment.status }} </p>
             </div>
         </div>
     </div>
@@ -105,7 +108,7 @@ export default {
         goToMenuConfig() {
             this.$router.push('/configuration');
         },
-        goToHomePage(){
+        goToHomePage() {
             this.$router.push('/');
         },
         goToHomeLog() {

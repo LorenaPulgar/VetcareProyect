@@ -4,14 +4,24 @@ export async function getAppointments() {
     try {
         const response = await axios.get('api/v1/appointment')
 
+        const statusMap = {
+            ['PENDING']: 'Pendiente',
+            ['CANCELLED']: 'Cancelada',
+            ['COMPLETED']: 'Completada'
+        };
+
         const formattedAppointments = response.data.map(appointment => ({
             id: appointment.id,
-            date: appointment.date,
+            date: new Date(appointment.date).toLocaleDateString(),
+            time: new Date(appointment.date).toLocaleTimeString(),
             address: appointment.veterinaryOffice.address,
             veterinaryName: appointment.veterinaryOffice.user.name,
             veterinaryId: appointment.veterinaryOffice.id,
-            status: appointment.status
+            status: statusMap[appointment.status]
         }))
+
+        console.log(formattedAppointments);
+
 
         return formattedAppointments
 

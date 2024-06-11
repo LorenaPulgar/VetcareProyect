@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.Collections;
 
 @Service
 @RequiredArgsConstructor
@@ -70,6 +71,8 @@ public class AppointmentService {
             var veterinary = veterinaryOfficeRepository.findVeterinaryOfficeByUser(user);
             appointments = appointmentRepository.findAppointmentByVeterinaryOffice(veterinary);
         }
+
+        Collections.sort(appointments, (a, b) -> a.getDate().compareTo(b.getDate()));
 
         return appointments.stream()
                 .map(appointmentMapper::appointmentToAppointmentDTO)
