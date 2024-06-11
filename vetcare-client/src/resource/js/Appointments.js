@@ -4,7 +4,16 @@ export async function getAppointments() {
     try {
         const response = await axios.get('api/v1/appointment')
 
-        return response.data
+        const formattedAppointments = response.data.map(appointment => ({
+            id: appointment.id,
+            date: appointment.date,
+            address: appointment.veterinaryOffice.address,
+            veterinaryName: appointment.veterinaryOffice.user.name,
+            veterinaryId: appointment.veterinaryOffice.id,
+            status: appointment.status
+        }))
+
+        return formattedAppointments
 
     } catch (err) {
         console.error(err)
