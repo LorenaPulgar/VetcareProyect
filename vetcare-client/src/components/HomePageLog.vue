@@ -19,7 +19,7 @@
                                     <i class="fa-solid fa-gear"></i>
                                     <span>Configuración</span>
                                 </div>
-                                <div class="dropdown-item">
+                                <div class="dropdown-item" @click="goToHomePage">
                                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                                     <span>Cerrar sesión</span>
                                 </div>
@@ -41,7 +41,7 @@
                         <i class="fa-solid fa-calendar-days"></i>
                     </div>
                     <div class="aAgendar">
-                        <a href="/schedule-appointment">Agendar Cita</a>
+                        <a href="/demo-schedule-appointment">Agendar Cita</a>
                     </div>
                 </div>
                 <div class="Blog">
@@ -87,6 +87,9 @@ export default {
         },
         goToMenuConfig() {
             this.$router.push('/configuration');
+        },
+        goToHomePage(){
+            this.$router.push('/');
         },
     },
 };

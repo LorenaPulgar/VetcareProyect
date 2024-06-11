@@ -6,7 +6,8 @@ export async function login(email, password) {
         const response = await axios.post('auth/login', { email, password })
 
         const responseBody = response.data
-
+        console.log(responseBody)
+        
         saveToken(responseBody.token)
         saveUserId(responseBody.userId, responseBody.petOwnerId)
 

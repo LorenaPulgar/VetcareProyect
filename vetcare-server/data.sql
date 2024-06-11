@@ -9,4 +9,5 @@ values
 
 
 SELECT * FROM pet_owners;
+SELECT * FROM users;
 
