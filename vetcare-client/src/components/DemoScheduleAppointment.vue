@@ -20,17 +20,57 @@ function scheduleAppointmentHandle(veterinary) {
     scheduleAppointment(veterinary.veterinaryId, date)
 }
 
+function validateTime(event) {
+    const input = event.target;
+    const datetime = new Date(input.value);
+    if (datetime.getMinutes() !== 0 || datetime.getSeconds() !== 0) {
+        datetime.setMinutes(0, 0, 0);
+        input.value = datetime.toISOString().slice(0, 16);
+        alert('Please select a time with hours on the hour, like 18:00 or 2:00.');
+    }
+}
+
 </script>
 
 <template>
+    <header class="header">
+        <div class="headermodif">
+            <div class="logo">
+                <img src="../resource/img/Logo-VetCare-invertido.png" alt="VetCare Logo" class="imglogo" />
+                <h1 class="logo-text">VetCare</h1>
+            </div>
+        </div>
+        <div class="nav-signup">
+            <nav>
+                <div class="navbar-icons">
+                    <i class="fa-solid fa-house" @click="goToHomeLog"></i>
+                    <i class="fa-regular fa-bell"></i>
+                    <div class="user-menu">
+                        <i class="fa-solid fa-user" @click="toggleMenu"></i>
+                        <div v-if="showMenu" class="dropdown-menu">
+                            <div class="dropdown-item" @click="goToMenuConfig">
+                                <i class="fa-solid fa-gear"></i>
+                                <span>Configuración</span>
+                            </div>
+                            <div class="dropdown-item" @click="goToHomePage">
+                                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                <span>Cerrar sesión</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
     <div class="wrap">
         <h2>Veterinarias</h2>
         <div class="vet-list">
             <div v-for="veterinary in veterinaries" v-bind:key="veterinary.veterinaryId" class="card">
-                <p>{{veterinary.name}}</p>
-                <p>{{veterinary.address}}</p>
-                <input type="datetime-local" :id="'vet-' + veterinary.veterinaryId">
-                <button @click="scheduleAppointmentHandle(veterinary)">
+                <p><strong>{{ veterinary.name }}</strong></p>
+                <p>{{ veterinary.address }}</p>
+                <input type="datetime-local" :id="'vet-' + veterinary.veterinaryId" class="datetime-local"
+                    @change="validateTime">
+                <button class="btnagendar" @click="scheduleAppointmentHandle(veterinary)">
                     Agendar cita
                 </button>
             </div>
@@ -38,42 +78,39 @@ function scheduleAppointmentHandle(veterinary) {
         <h2>Citas pendientes</h2>
         <div class="sche-list">
             <div v-for="appointment in appointments" v-bind:key="appointment.id" class="card">
-                <p>{{appointment.id}}</p>
-                <p class="code" v-for="line in JSON.stringify(appointment, null, '&nbsp; &nbsp;').split('\n')" v-bind:key="line">
-                    {{line}}
+                <p>{{ appointment.id }}</p>
+                <p class="code" v-for="line in JSON.stringify(appointment, null, '&nbsp; &nbsp;').split('\n')"
+                    v-bind:key="line">
+                    {{ line }}
                 </p>
             </div>
         </div>
     </div>
 </template>
 
-<style>
+<style src="../resource/css/DemoSchedule.css"></style>
 
-.wrap {
-    font-family: "Open Sans";
-    padding: 40px 30px 0px 30px;
-}
-
-.code {
-    font-family: 'consolas';
-}
-
-.card {
-    padding: 20px;
-    background-color: rgb(222, 240, 255);
-}
-
-.vet-list {
-    display: grid;
-    gap: 30px;
-    grid-template-columns: repeat(3, 1fr);
-    padding-top: 30px;
-}
-
-.sche-list {
-    display: grid;
-    gap: 30px;
-    grid-template-columns: repeat(1, 1fr);
-    padding-top: 30px;
-}
-</style>
+<script>
+export default {
+    name: 'DemoScheduleAppointment',
+    data() {
+        return {
+            showMenu: false,
+        };
+    },
+    methods: {
+        toggleMenu() {
+            this.showMenu = !this.showMenu;
+        },
+        goToMenuConfig() {
+            this.$router.push('/configuration');
+        },
+        goToHomePage(){
+            this.$router.push('/');
+        },
+        goToHomeLog() {
+            this.$router.push('/home');
+        },
+    },
+};
+</script>
