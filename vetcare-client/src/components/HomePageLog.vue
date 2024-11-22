@@ -1,3 +1,8 @@
+<script setup>
+import { ref } from 'vue';
+const showVeterinaries = ref(localStorage.getItem('pet-owner-id') !== 'null');
+</script>
+
 <template>
     <div class="home">
         <header class="header">
@@ -41,7 +46,8 @@
                         <i class="fa-solid fa-calendar-days"></i>
                     </div>
                     <div class="aAgendar">
-                        <a href="/demo-schedule-appointment">Agendar Cita</a>
+                        <a v-if="showVeterinaries" href="/demo-schedule-appointment">Agendar Cita</a>
+                        <a v-else href="/demo-schedule-appointment">Ver citas</a>
                     </div>
                 </div>
                 <div class="Blog">

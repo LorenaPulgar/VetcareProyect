@@ -22,8 +22,11 @@ GET /{user-id}/appointments
 
 
 Cancelar una cita
-
+EL ENDPOINT DE ABAJO ES UNA PUTA MENTIRA, PERDI 1 HORA DE TRABAJO
 PATH /{user-id}/appoinment/{appointment-id}/cancel
+ESTE ES EL ENDPOINT VERDADERO
+/api/v1/cancel-appointment
+(╯-_-)╯︵┻━┻
 
 
 Registrar usuario

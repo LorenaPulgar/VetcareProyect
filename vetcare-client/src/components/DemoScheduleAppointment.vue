@@ -1,11 +1,13 @@
 <script setup>
-import { getAppointments, scheduleAppointment } from '@/resource/js/Appointments';
+import { getAppointments, scheduleAppointment, AppointmentStatus } from '@/resource/js/Appointments';
 import { getVeterinaries } from '@/resource/js/Veterinaries';
 import { ref } from 'vue';
 
 /** @type {import('vue').Ref<import('@/resource/js/Veterinaries').Veterinary[]>} */
 const veterinaries = ref([])
 const appointments = ref([])
+const showVeterinaries = ref(localStorage.getItem('pet-owner-id') !== 'null');
+console.log(showVeterinaries.value)
 
 getVeterinaries().then(vets => {
     veterinaries.value = vets
@@ -66,19 +68,25 @@ function validateTime(event) {
         </div>
     </header>
     <div class="wrap">
-        <h2>Veterinarias</h2>
-        <div class="vet-list">
-            <div v-for="veterinary in veterinaries" v-bind:key="veterinary.veterinaryId" class="card">
-                <p><strong>{{ veterinary.name }}</strong></p>
-                <p>{{ veterinary.address }}</p>
-                <input type="datetime-local" :id="'vet-' + veterinary.veterinaryId" class="datetime-local"
-                    @change="validateTime">
-                <button class="btnagendar" @click="scheduleAppointmentHandle(veterinary)">
-                    Agendar cita
-                </button>
+        <div v-if="showVeterinaries">
+            <h2>Veterinarias</h2>
+                <div v-for="veterinary in veterinaries" v-bind:key="veterinary.veterinaryId" class="card">
+                    <p><strong>{{ veterinary.name }}</strong></p>
+                    <p>
+                        {{ veterinary.address }}
+                        <a :href="'https://www.google.com/maps?q=' + encodeURIComponent(veterinary.address)" target="_blank">
+                            Ver en Google Maps
+                        </a>
+                    </p>
+                    <input type="datetime-local" :id="'vet-' + veterinary.veterinaryId" class="datetime-local"
+                        @change="validateTime">
+                    <button class="btnagendar" @click="scheduleAppointmentHandle(veterinary)">
+                        Agendar cita
+                    </button>
+                </div>
             </div>
-        </div>
-        <h2>Citas pendientes</h2>
+        <h2 v-if="showVeterinaries">Citas pendientes</h2>
+        <h2 v-else>Citas</h2>
         <div class="sche-list">
             <div v-for="appointment in appointments" v-bind:key="appointment.id" class="card">
                 <p> <strong> Veterinaria: </strong> {{ appointment.veterinaryName }} </p>
@@ -86,6 +94,14 @@ function validateTime(event) {
                 <p> <strong> Hora: </strong> {{ appointment.time }} </p>
                 <p> <strong> Dirección: </strong> {{ appointment.address }} </p>
                 <p> <strong> Estado: </strong> {{ appointment.status }} </p>
+                <div v-if="showVeterinaries===false">   
+                    <button v-if="appointment.status" class="btnagendar" @click="AppointmentStatus(appointment.id,appointment.petOwner,appointment.veterinaryOffice,appointment.dateTimeSpam,'PENDING')" >
+                        Aceptar cita
+                    </button>
+                    <button class="btnagendar" @click="AppointmentStatus(appointment.id,appointment.petOwner,appointment.veterinaryOffice,appointment.dateTimeSpam,'CANCELLED')">
+                        Cancelar cita
+                    </button>
+                </div>
             </div>
         </div>
     </div>

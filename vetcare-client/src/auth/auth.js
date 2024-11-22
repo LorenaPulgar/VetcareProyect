@@ -11,7 +11,7 @@ export async function login(email, password) {
         saveToken(responseBody.token)
         saveUserId(responseBody.userId, responseBody.petOwnerId)
 
-        alert(":)")
+        alert(JSON.stringify(responseBody))
 
     } catch (err) {
         if (err.response && err.response.status === 404) {

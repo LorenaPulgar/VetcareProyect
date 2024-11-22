@@ -80,13 +80,22 @@ public class AppointmentService {
     }
 
     public AppointmentDTO cancelAppointment(AppointmentDTO appointmentDTO) {
+
+        // Busca la cita por ID
         var appointment = appointmentRepository.findById(appointmentDTO.id())
-                .orElseThrow(() -> new ResourceNotFoundException("There is no appointments with id provided"));
+            .orElseThrow(() -> new ResourceNotFoundException("There is no appointment with the id provided"));
 
-        appointment.setStatus(AppointmentStatus.CANCELLED);
+        // Actualiza el estado de la cita con el valor recibido
+        appointment.setStatus(AppointmentStatus.valueOf(appointmentDTO.status()));
 
+        // Guarda los cambios en la base de datos
         var savedAppointment = appointmentRepository.save(appointment);
 
+        System.out.println("Estado despues de guardar: " + savedAppointment.getStatus());
+
+        // Mapea y devuelve el resultado
         return appointmentMapper.appointmentToAppointmentDTO(savedAppointment);
+
+
     }
 }
